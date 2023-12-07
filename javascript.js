@@ -3,6 +3,8 @@
 //Save the user choice in a variable playerSelection
 //Set the user choice string to lowercase
 
+const playerSelection = prompt("Please choose 'Rock', 'Paper', or 'Scissors'!").toLowerCase();
+
 
 //COMPUTER CHOICE
 
