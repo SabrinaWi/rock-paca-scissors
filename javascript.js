@@ -33,7 +33,7 @@ function getComputerChoice () {
     }
 }
 
-let computerSelection = getComputerChoice();
+const computerSelection = getComputerChoice();
 
 console.log(computerSelection);
 
