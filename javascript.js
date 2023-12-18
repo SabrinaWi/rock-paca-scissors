@@ -3,9 +3,13 @@
 //Save the user choice in a variable playerSelection
 //Set the user choice string to lowercase
 
-const playerSelection = prompt("Please choose 'Rock', 'Paper', or 'Scissors'!").toLowerCase();
-console.log(playerSelection);
+ function getPlayerChoice () {
+    let choice = prompt("Please choose 'Rock', 'Paper', or 'Scissors'!").toLowerCase();
+    return choice;
+ }
 
+const playerSelection = getPlayerChoice();
+console.log(playerSelection);
 //COMPUTER CHOICE
 
 //Declare a variable computerSelection
@@ -101,3 +105,15 @@ console.log(roundResult);
 //Remember to use template literals to include player and computer choices
 //If result was a tie, display message 'Let's try again!'
 //Prompt user to try again.
+
+function showRoundResult (playerSelection, computerSelection, roundResult) {
+    if (roundResult === 'win' || roundResult === 'lose') {
+        alert(`You ${roundResult}!`);
+    } else if (roundResult === 'tie') {
+        alert(`It's a ${roundResult}! I will figure out how to deal with this next time!`)
+    } else {
+        alert(`There must have been an ${roundResult}! I cannot understand what you chose.`)
+    }
+}
+
+showRoundResult(playerSelection, computerSelection, roundResult);
