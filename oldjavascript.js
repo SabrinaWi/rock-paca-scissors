@@ -3,7 +3,7 @@
 //Save the user choice in a variable playerSelection
 //Set the user choice string to lowercase
 
- function getPlayerChoice () {
+/* function getPlayerChoice () {
     let choice = prompt("Please choose 'Rock', 'Paper', or 'Scissors'!").toLowerCase();
     return choice;
  }
@@ -129,3 +129,5 @@ showRoundResult(roundResult);
     const newRoundResult = playRound(newPlayerChoice, newComputerChoice);
     showRoundResult(newPlayerChoice, newComputerChoice, newRoundResult);
     }
+
+    */
