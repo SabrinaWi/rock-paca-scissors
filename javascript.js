@@ -84,4 +84,20 @@ function showRoundResult() {
 
 showRoundResult();  
 
+//GAME OF FIVE
+
+//count number of wins and losses after each round
+
+function winCount() {
+    let wins;
+    let losses; 
+    roundResult === 'win' ? ++wins : ++losses; 
+}
+
+//alert number of wins and losses after each round
+
+//alert a final result of win or loss
+
+
+
 
