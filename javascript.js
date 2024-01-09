@@ -89,8 +89,8 @@ showRoundResult();
 //count number of wins and losses after each round
 
 function winCount() {
-    let wins;
-    let losses; 
+    let wins = 0;
+    let losses = 0; 
     roundResult === 'win' ? ++wins : ++losses; 
 }
 
