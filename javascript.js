@@ -21,6 +21,67 @@ function getComputerChoice() {
         }
 }
 
+//Play a round of rock. paper, scissors
 
+function playRound () {
+    const playerSelection = getPlayerChoice();
+        console.log(playerSelection);
+    const computerSelection = getComputerChoice();
+        console.log(computerSelection);
+        if (playerSelection === 'rock') {
+            switch (computerSelection) {
+                case 'rock': 
+                    return 'tie';
+                    break;
+                case 'paper':
+                    return 'lose';
+                    break;
+                case 'scissors':
+                    return 'win';
+            };
+        } else if (playerSelection === 'paper') {
+            switch (computerSelection) {
+                case 'rock': 
+                    return 'win';
+                    break;
+                case 'paper':
+                    return 'tie';
+                    break;
+                case 'scissors':
+                    return 'lose';
+            };       
+        } else if (playerSelection === 'scissors') {
+            switch (computerSelection) {
+                case 'rock': 
+                    return 'lose';
+                    break;
+                case 'paper':
+                    return 'win';
+                    break;
+                case 'scissors':
+                    return 'tie';
+            };      
+        } else {
+                return 'error';
+            }
+        }
+
+let roundResult = playRound();
+
+//return output to the player and initiate another round in case it was a tie
+
+function showRoundResult() {
+        if (roundResult === 'win' || roundResult === 'lose') {
+            alert(`You ${roundResult}!`);
+        } else if (roundResult === 'tie') {
+            alert(`It's a ${roundResult}! Let's play again!`);
+            roundResult = playRound();
+            showRoundResult();
+        } else {
+            alert(`There must have been an ${roundResult}! I cannot understand what you chose.`)
+        }
+    }
+
+showRoundResult();  
 
 
