@@ -22,8 +22,9 @@ function getComputerChoice() {
 }
 
 //Play a round of rock. paper, scissors
+let roundResult;
 
-function playRound () {
+function playRound() {
     const playerSelection = getPlayerChoice();
         console.log(playerSelection);
     const computerSelection = getComputerChoice();
@@ -31,42 +32,40 @@ function playRound () {
         if (playerSelection === 'rock') {
             switch (computerSelection) {
                 case 'rock': 
-                    return 'tie';
+                    return roundResult = 'tie';
                     break;
                 case 'paper':
-                    return 'lose';
+                    return roundResult = 'lose';
                     break;
                 case 'scissors':
-                    return 'win';
+                    return roundResult = 'win';
             };
         } else if (playerSelection === 'paper') {
             switch (computerSelection) {
                 case 'rock': 
-                    return 'win';
+                    return roundResult = 'win';
                     break;
                 case 'paper':
-                    return 'tie';
+                    return roundResult = 'tie';
                     break;
                 case 'scissors':
-                    return 'lose';
+                    return roundResult = 'lose';
             };       
         } else if (playerSelection === 'scissors') {
             switch (computerSelection) {
                 case 'rock': 
-                    return 'lose';
+                    return roundResult = 'lose';
                     break;
                 case 'paper':
-                    return 'win';
+                    return roundResult = 'win';
                     break;
                 case 'scissors':
-                    return 'tie';
+                    return roundResult = 'tie';
             };      
         } else {
-                return 'error';
+                return roundResult = 'error';
             }
         }
-
-let roundResult = playRound();
 
 //return output to the player and initiate another round in case it was a tie
 
@@ -79,25 +78,46 @@ function showRoundResult() {
             showRoundResult();
         } else {
             alert(`There must have been an ${roundResult}! I cannot understand what you chose.`)
-        }
+        };
     }
 
-showRoundResult();  
+//count number of wins
+
+let wins= 0;
+
+function countWins() {
+    if (roundResult === 'win') {
+        ++wins;
+        return wins;
+    }
+}
+
+
+//test game
+
+function testGame() {
+    playRound();
+    showRoundResult();
+    countWins();
+    console.log(wins);
+    playRound();
+    showRoundResult();
+    countWins();
+    console.log(wins);
+}
+
+testGame();
 
 //GAME OF FIVE
 
-//count number of wins and losses after each round
+//play a round
 
-function winCount() {
-    let wins = 0;
-    let losses = 0; 
-    roundResult === 'win' ? ++wins : ++losses; 
-}
+
+//alert result and number of wins and losses
+
 
 //alert number of wins and losses after each round
 
 //alert a final result of win or loss
-
-
 
 
