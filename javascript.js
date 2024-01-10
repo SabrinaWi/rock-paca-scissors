@@ -79,11 +79,13 @@ function showRoundResult() {
         } else {
             alert(`There must have been an ${roundResult}! I cannot understand what you chose.`)
         };
+        alert(`You have ${wins} wins and ${losses} losses!`)
     }
 
 //count number of wins
 
 let wins= 0;
+let losses = 0;
 
 function countWins() {
     if (roundResult === 'win') {
@@ -92,32 +94,37 @@ function countWins() {
     }
 }
 
+function countLosses() {
+    if (roundResult === 'lose') {
+        ++losses;
+        return losses;
+    }
+}
 
+/*function finalResult() {
+    
+}
+*/
+
+function fullRound() {
+    playRound();
+    countWins()
+    countLosses();
+    showRoundResult();
+}
 //test game
 
 function testGame() {
-    playRound();
-    showRoundResult();
-    countWins();
-    console.log(wins);
-    playRound();
-    showRoundResult();
-    countWins();
-    console.log(wins);
+    fullRound();
+    fullRound();
 }
+
+TAKE TIE OPTION OUT OF ROUND RESULT FUNCTION!
 
 testGame();
 
-//GAME OF FIVE
-
-//play a round
-
-
-//alert result and number of wins and losses
-
-
-//alert number of wins and losses after each round
-
-//alert a final result of win or loss
-
-
+// play 5 rounds
+// write a function to alert wins and losses
+// use a variable to set 5 - wins as the losses
+// add alert to fullRound();
+// add final result alert
