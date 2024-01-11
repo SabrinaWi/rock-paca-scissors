@@ -86,7 +86,7 @@ function showRoundResult() {
 
 function itsATie() {
         alert(`You chose ${playerSelection}. \n\n I also chose ${computerSelection}! \n\n It's a ${roundResult}! Let's play again!`);
-        roundResult = playRound();
+        playRound();
     }
 
 //count number of wins
@@ -108,10 +108,16 @@ function countLosses() {
     }
 }
 
-/*function finalResult() {
-    
+//evaluate wins and losses and announce final result
+
+function finalResult() {
+    if (wins > losses) {
+        alert(`CONGRATULATIONS! \n\n YOU WIN!`);
+    } else {
+        alert(`BOO! \n\n YOU LOSE!`);
+    }
 }
-*/
+
 
 function fullRound() {
     playRound();
@@ -119,22 +125,16 @@ function fullRound() {
     countLosses();
     showRoundResult();
 }
-//test game
 
-function testGame() {
+//learning loops in next lesson, so only calling the rounds five times for now instead of looping
+
+function game() {
     fullRound();
     fullRound();
     fullRound();
     fullRound();
     fullRound();
+    finalResult();
 }
 
-
-
-testGame();
-
-// play 5 rounds
-// write a function to alert wins and losses
-// use a variable to set 5 - wins as the losses
-// add alert to fullRound();
-// add final result alert
+game();
