@@ -32,7 +32,8 @@ function playRound() {
         if (playerSelection === 'rock') {
             switch (computerSelection) {
                 case 'rock': 
-                    return roundResult = 'tie';
+                    roundResult = 'tie';
+                    itsATie();
                     break;
                 case 'paper':
                     return roundResult = 'lose';
@@ -46,7 +47,8 @@ function playRound() {
                     return roundResult = 'win';
                     break;
                 case 'paper':
-                    return roundResult = 'tie';
+                    roundResult = 'tie';
+                    itsATie();
                     break;
                 case 'scissors':
                     return roundResult = 'lose';
@@ -60,7 +62,9 @@ function playRound() {
                     return roundResult = 'win';
                     break;
                 case 'scissors':
-                    return roundResult = 'tie';
+                    roundResult = 'tie';
+                    itsATie();
+                    break;
             };      
         } else {
                 return roundResult = 'error';
@@ -72,14 +76,15 @@ function playRound() {
 function showRoundResult() {
         if (roundResult === 'win' || roundResult === 'lose') {
             alert(`You ${roundResult}!`);
-        } else if (roundResult === 'tie') {
-            alert(`It's a ${roundResult}! Let's play again!`);
-            roundResult = playRound();
-            showRoundResult();
         } else {
             alert(`There must have been an ${roundResult}! I cannot understand what you chose.`)
         };
         alert(`You have ${wins} wins and ${losses} losses!`)
+    }
+    
+function itsATie() {
+        alert(`It's a ${roundResult}! Let's play again!`);
+        roundResult = playRound();
     }
 
 //count number of wins
@@ -114,14 +119,14 @@ function fullRound() {
 }
 //test game
 
-function testGame() {
+//function testGame() {
+//    fullRound();
     fullRound();
-    fullRound();
-}
+//}
 
-TAKE TIE OPTION OUT OF ROUND RESULT FUNCTION!
 
-testGame();
+
+//testGame();
 
 // play 5 rounds
 // write a function to alert wins and losses
