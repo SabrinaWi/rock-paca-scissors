@@ -23,11 +23,13 @@ function getComputerChoice() {
 
 //Play a round of rock. paper, scissors
 let roundResult;
+let playerSelection;
+let computerSelection;
 
 function playRound() {
-    const playerSelection = getPlayerChoice();
+    playerSelection = getPlayerChoice();
         console.log(playerSelection);
-    const computerSelection = getComputerChoice();
+    computerSelection = getComputerChoice();
         console.log(computerSelection);
         if (playerSelection === 'rock') {
             switch (computerSelection) {
@@ -75,15 +77,15 @@ function playRound() {
 
 function showRoundResult() {
         if (roundResult === 'win' || roundResult === 'lose') {
-            alert(`You ${roundResult}!`);
+            alert(`You chose ${playerSelection}. \n\n I chose ${computerSelection}! \n\n You ${roundResult}!`);
         } else {
-            alert(`There must have been an ${roundResult}! I cannot understand what you chose.`)
+            alert(`There must have been an ${roundResult}! \n\n I cannot understand what you chose.`)
         };
         alert(`You have ${wins} wins and ${losses} losses!`)
     }
-    
+
 function itsATie() {
-        alert(`It's a ${roundResult}! Let's play again!`);
+        alert(`You chose ${playerSelection}. \n\n I also chose ${computerSelection}! \n\n It's a ${roundResult}! Let's play again!`);
         roundResult = playRound();
     }
 
@@ -119,14 +121,17 @@ function fullRound() {
 }
 //test game
 
-//function testGame() {
-//    fullRound();
+function testGame() {
     fullRound();
-//}
+    fullRound();
+    fullRound();
+    fullRound();
+    fullRound();
+}
 
 
 
-//testGame();
+testGame();
 
 // play 5 rounds
 // write a function to alert wins and losses
