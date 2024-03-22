@@ -2,28 +2,55 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <script src="javascript.js defer"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Micro+5&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
+    <script src="javascript.js defer"></script>
     <title>Simple Rock, Paca, Scissors Game</title>
   </head>
   <body>
-    <header>ROCK PACA SCISSORS</header>
+    <header>ROCK * PACA * SCISSORS</header>
     <main>
       <div class="play-area">
         <div class="player-side">
-          <div>PLAYER</div>
+          <h2>PLAYER</h2>
           <div id="player-buttons">
-            <button>Rock</button>
-            <button>Paca</button>
-            <button>Scissors</button>
+            <button type="button" name="rock">
+              <img src="img/Rock.svg" alt="an image of a rock" />
+            </button>
+            <button type="button" name="paca">
+              <img src="img/Paca.svg" alt="an image of an alpaca" />
+            </button>
+            <button type="button" name="scissors">
+              <img
+                src="img/Scissors.svg"
+                alt="an image of a pair of scissors"
+              />
+            </button>
           </div>
         </div>
         <div class="computer-side">
-          <div>COMPUTER</div>
+          <h2>COMPUTER</h2>
           <div id="computer-buttons">
-            <button>Rock</button>
-            <button>Paca</button>
-            <button>Scissors</button>
+            <button type="button" name="rock">
+              <img src="img/Rock.svg" alt="an image of a rock" />
+            </button>
+            <button type="button" name="paca">
+              <img src="img/Paca.svg" alt="an image of an alpaca" />
+            </button>
+            <button type="button" name="scissors">
+              <img
+                src="img/Scissors.svg"
+                alt="an image of a pair of scissors"
+              />
+            </button>
           </div>
         </div>
       </div>
