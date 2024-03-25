@@ -1,13 +1,15 @@
-//Prompt user to choose 'rock', 'paper' or 'scissors'
-
+//Prompt user to choose 'rock', 'paca' or 'scissors'
+//TODO replace with button click
+//Highlight player choice
+//TODO disable buttons on computer side
 function getPlayerChoice() {
   const playerChoice = prompt(
-    "Please choose 'Rock', 'Paper', or 'Scissors'!"
+    "Please choose 'Rock', 'Paca', or 'Scissors'!"
   ).toLowerCase();
   return playerChoice;
 }
 
-//Generate a random choice of 'rock', 'paper' or 'scissors' for the computer's choice
+//Generate a random choice of 'rock', 'paca' or 'scissors' for the computer's choice
 
 function getComputerChoice() {
   const random = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
@@ -16,14 +18,16 @@ function getComputerChoice() {
       return "rock";
       break;
     case 2:
-      return "paper";
+      return "paca";
       break;
     case 3:
       return "scissors";
   }
 }
 
-//Play a round of rock. paper, scissors
+//TODO show computer choice by highlighting corresponding button
+
+//Play a round of rock. paca, scissors
 let roundResult;
 let playerSelection;
 let computerSelection;
@@ -39,18 +43,18 @@ function playRound() {
         roundResult = "tie";
         itsATie();
         break;
-      case "paper":
+      case "paca":
         return (roundResult = "lose");
         break;
       case "scissors":
         return (roundResult = "win");
     }
-  } else if (playerSelection === "paper") {
+  } else if (playerSelection === "paca") {
     switch (computerSelection) {
       case "rock":
         return (roundResult = "win");
         break;
-      case "paper":
+      case "paca":
         roundResult = "tie";
         itsATie();
         break;
@@ -62,7 +66,7 @@ function playRound() {
       case "rock":
         return (roundResult = "lose");
         break;
-      case "paper":
+      case "paca":
         return (roundResult = "win");
         break;
       case "scissors":
@@ -76,6 +80,8 @@ function playRound() {
 }
 
 //return output to the player and initiate another round in case it was a tie
+//TODO display output in message div instead
+//TODO change message bc wins will be permanently visible in scoreboard
 
 function showRoundResult() {
   if (roundResult === "win" || roundResult === "lose") {
@@ -87,7 +93,7 @@ function showRoundResult() {
       `There must have been an ${roundResult}! \n\n I cannot understand what you chose.`
     );
   }
-  alert(`You have ${wins} wins and ${losses} losses!`);
+  alert(`You have ${wins} wins and ${winsComputer} winsComputer!`);
 }
 
 function itsATie() {
@@ -98,28 +104,29 @@ function itsATie() {
 }
 
 //count number of wins
+//TODO display wins in counter/scoreboard
 
-let wins = 0;
-let losses = 0;
+let winsPlayer = 0;
+let winsComputer = 0;
 
-function countWins() {
+function countWinsPlayer() {
   if (roundResult === "win") {
-    ++wins;
+    ++winsPlayer;
     return wins;
   }
 }
 
-function countLosses() {
+function countWinsComputer() {
   if (roundResult === "lose") {
-    ++losses;
-    return losses;
+    ++winsComputer;
+    return winsComputer;
   }
 }
 
-//evaluate wins and losses and announce final result
+//evaluate wins and winsComputer and announce final result
 
 function finalResult() {
-  if (wins > losses) {
+  if (winsPlayer > winsComputer) {
     alert(`CONGRATULATIONS! \n\n YOU WIN!`);
   } else {
     alert(`BOO! \n\n YOU LOSE!`);
@@ -128,12 +135,13 @@ function finalResult() {
 
 function fullRound() {
   playRound();
-  countWins();
-  countLosses();
+  countWinsPlayer();
+  countWinsComputer();
   showRoundResult();
 }
 
 //learning loops in next lesson, so only calling the rounds five times for now instead of looping
+//TODO replace with loop
 
 function game() {
   fullRound();
