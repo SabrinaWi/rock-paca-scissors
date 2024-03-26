@@ -1,16 +1,21 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   font-family: "DynaPuff", Arial, sans-serif;
   margin: 0px;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  justify-content: space-between;
   text-align: center;
 }
 
 header {
   min-height: 10vh;
-  text-align: center;
   font-size: 100px;
 }
 
@@ -18,45 +23,66 @@ main {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.play-area {
+.play-area,
+.messages {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  margin: auto;
+  margin: auto;;
+  height: 50%;
 }
 
 .player-side,
 .computer-side {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: auto;
-}
-
-button,
-img {
-  border-radius: 100%;
-  width: 200px;
-  height: 200px;
-}
-
-.counters,
-.messages {
-  display: flex;
-  width: 100%;
-  margin: auto;
   justify-content: center;
+  align-items: center;
+  width: 40%;
+  margin: auto;
+  flex: 1;
 }
 
 .counters {
   font-family: "Micro 5", Arial, sans-serif;
   font-size: 100px;
+  display: flex;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+}
+
+#player-btns,
+#computer-btns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#player-btns button,
+#player-btns img,
+#computer-btns button,
+#computer-btns img {
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
 }
 
 footer {
   min-height: 3vh;
+}
+
+footer a {
+  color: inherit;
 }
 
 /* TODO colors

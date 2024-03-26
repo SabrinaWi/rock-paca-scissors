@@ -26,33 +26,41 @@
 
         <div class="player-side">
           <h2>PLAYER</h2>
-          <div id="player-buttons">
-            <button type="button" name="rock">
+          <div id="player-btns">
+            <button type="button" name="rock-btn">
               <img src="img/Rock.svg" alt="an image of a rock" />
             </button>
-            <button type="button" name="paca">
+            <button type="button" name="paca-btn">
               <img src="img/Paca.svg" alt="an image of an alpaca" />
             </button>
-            <button type="button" name="scissors">
+            <button type="button" name="scissors-btn">
               <img
                 src="img/Scissors.svg"
                 alt="an image of a pair of scissors"
               />
             </button>
           </div>
+        </div>
+
+        <!-- THE SCOREBOARD -->
+        <div class="counters">
+          <!-- TODO replace digits with interactive counter -->
+          <div class="player-counter">0</div>
+          <div class="separator">:</div>
+          <div class="computer-counter">0</div>
         </div>
 
         <!-- THE COMPUTER'S SIDE -->
         <div class="computer-side">
           <h2>COMPUTER</h2>
-          <div id="computer-buttons">
-            <button type="button" name="rock">
+          <div id="computer-btns">
+            <button type="button" name="rock-btn">
               <img src="img/Rock.svg" alt="an image of a rock" />
             </button>
-            <button type="button" name="paca">
+            <button type="button" name="paca-btn">
               <img src="img/Paca.svg" alt="an image of an alpaca" />
             </button>
-            <button type="button" name="scissors">
+            <button type="button" name="scissors-btn">
               <img
                 src="img/Scissors.svg"
                 alt="an image of a pair of scissors"
@@ -61,22 +69,22 @@
           </div>
         </div>
       </div>
-
-      <!-- THE SCOREBOARD -->
-      <div class="counters">
-        <!-- TODO replace digits with interactive counter -->
-        <div class="player-counter">0</div>
-        <div class="separator">:</div>
-        <div class="computer-counter">0</div>
-      </div>
-
       <!-- THE MESSAGES ABOUT THE GAME STATUS -->
       <!-- TODO replace text with interactive output-->
-      <div class="messages">Messages</div>
+      <div class="messages">
+        <p>
+          Welcome! Would you like to play a round of Rock * Paca * Scissors?
+        </p>
+        <div #first-choice-btns>
+          <button type="button" name="yes-btn">YES</button>
+          <button type="butto" name="no-btn">NO</button>
+        </div>
+      </div>
     </main>
     <footer>
-      &copy; by Sabrina Williams 2024 made as an assignment for
-      <a href="https://www.theodinproject.com">The Odin Project</a>
+      &copy; by Sabrina Williams 2024 - made as an assignment for
+      <a href="https://www.theodinproject.com">The Odin Project</a> (but maybe
+      escalated a bit)
     </footer>
   </body>
 </html>
