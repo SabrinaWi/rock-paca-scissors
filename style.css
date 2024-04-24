@@ -72,6 +72,10 @@ main {
   height: 200px;
 }
 
+#player-btns button:hover {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
 .messages {
   display: flex;
   flex-direction: column;
@@ -85,5 +89,5 @@ footer a {
   color: inherit;
 }
 
-/* TODO colors
+/* TODO colors 
 /*TODO optimize layout
