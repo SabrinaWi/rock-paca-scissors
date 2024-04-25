@@ -61,6 +61,7 @@ main {
 #computer-btns {
   display: flex;
   flex-wrap: wrap;
+  gap: 5px;
 }
 
 #player-btns button,
@@ -74,6 +75,12 @@ main {
 
 #player-btns button:hover {
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+#player-btns button.active,
+#computer-btns button.active {
+  border: none;
+  box-shadow: rgba(7, 76, 156, 0.3) 0px 0px 0px 3px inset, rgba(7, 76, 156, 0.3) 0px 0px 0px 3px;
 }
 
 .messages {
