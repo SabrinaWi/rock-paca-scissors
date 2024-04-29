@@ -4,6 +4,12 @@ let computerChoice = "";
 const playerBtns = document.querySelectorAll("#player-btns button");
 const computerBtns = document.querySelectorAll("#computer-btns button");
 
+// Function to remove highlight from buttons
+
+function rmvHighlight(buttons) {
+  buttons.forEach((button) => button.classList.remove("active"));
+}
+
 //Get player choice
 
 function getPlayerChoice(playerBtn) {
@@ -13,7 +19,7 @@ function getPlayerChoice(playerBtn) {
 //Highlight player choice
 
 function highlightPlayerChoice(playerBtn) {
-  playerBtns.forEach((playerBtn) => playerBtn.classList.remove("active"));
+  rmvHighlight(playerBtns);
   playerBtn.classList.add("active");
 }
 
@@ -37,7 +43,7 @@ function getComputerChoice() {
 //Highlight computer choice
 
 function highlightComputerChoice(computerChoice) {
-  computerBtns.forEach((computerBtn) => computerBtn.classList.remove("active"));
+  rmvHighlight(computerBtns);
   computerBtn = document.querySelector(
     `#computer-btns button[name="${computerChoice}"]`
   );
