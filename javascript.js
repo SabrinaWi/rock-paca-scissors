@@ -50,6 +50,46 @@ function highlightComputerChoice(computerChoice) {
   computerBtn.classList.add("active");
 }
 
+//Get result for one round
+
+let roundResult = "";
+
+function getRoundResult(playerChoice, computerChoice) {
+  if (playerChoice === "rock-btn") {
+    switch (computerChoice) {
+      case "rock-btn":
+        return (roundResult = "tie");
+      // itsATie();
+      case "paca-btn":
+        return (roundResult = "lose");
+      case "scissors-btn":
+        return (roundResult = "win");
+    }
+  } else if (playerChoice === "paca-btn") {
+    switch (computerChoice) {
+      case "rock-btn":
+        return (roundResult = "win");
+      case "paca-btn":
+        return (roundResult = "tie");
+      // itsATie();
+      case "scissors-btn":
+        return (roundResult = "lose");
+    }
+  } else if (playerChoice === "scissors-btn") {
+    switch (computerChoice) {
+      case "rock-btn":
+        return (roundResult = "lose");
+      case "paca-btn":
+        return (roundResult = "win");
+      case "scissors-btn":
+        return (roundResult = "tie");
+      // itsATie();
+    }
+  } else {
+    return (roundResult = "error");
+  }
+}
+
 //Main game logic for one round
 
 function playRound() {
@@ -58,6 +98,8 @@ function playRound() {
   getComputerChoice();
   highlightComputerChoice(computerChoice);
   console.log(playerChoice, computerChoice);
+  getRoundResult(playerChoice, computerChoice);
+  console.log(roundResult);
 }
 
 //Event handler to start a round
