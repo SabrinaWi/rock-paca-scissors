@@ -62,7 +62,7 @@ function evaluateRoundResult(playerChoice, computerChoice) {
         break;
       // itsATie();
       case "paca-btn":
-        roundResult = "lose";
+        roundResult = "loss";
         break;
       case "scissors-btn":
         roundResult = "win";
@@ -77,12 +77,12 @@ function evaluateRoundResult(playerChoice, computerChoice) {
         break;
       // itsATie();
       case "scissors-btn":
-        roundResult = "lose";
+        roundResult = "loss";
     }
   } else if (playerChoice === "scissors-btn") {
     switch (computerChoice) {
       case "rock-btn":
-        roundResult = "lose";
+        roundResult = "loss";
         break;
       case "paca-btn":
         roundResult = "win";
@@ -97,7 +97,29 @@ function evaluateRoundResult(playerChoice, computerChoice) {
   return roundResult;
 }
 
+//Output for the #msg paragraph
+
+const msg = document.querySelector("#msg");
+
+function evaluateResultMsg(roundResult) {
+  switch (roundResult) {
+    case "win":
+      msg.textContent = "You win! Well done!";
+      break;
+    case "loss":
+      msg.textContent = "You lose! Too bad!";
+      break;
+    case "tie":
+      msg.textContent = "It's a tie! Let's try that again!";
+      break;
+    default:
+      msg.textContent =
+        "I'm so sorry, something seems to have gone wrong. Maybe the alpaca ran off!";
+  }
+}
+
 //Main game logic for one round
+//TODO rmv console.log();
 
 function playRound() {
   getPlayerChoice(this);
@@ -107,6 +129,7 @@ function playRound() {
   console.log(playerChoice, computerChoice);
   evaluateRoundResult(playerChoice, computerChoice);
   console.log(roundResult);
+  evaluateResultMsg(roundResult);
 }
 
 //Event handler to start a round
