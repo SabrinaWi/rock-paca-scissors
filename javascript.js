@@ -25,7 +25,7 @@ function highlightPlayerChoice(playerBtn) {
 
 //Generate computer choice
 
-function getComputerChoice() {
+function generateComputerChoice() {
   const random = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
   switch (random) {
     case 1:
@@ -50,44 +50,51 @@ function highlightComputerChoice(computerChoice) {
   computerBtn.classList.add("active");
 }
 
-//Get result for one round
+//Evaluate result for one round
 
 let roundResult = "";
 
-function getRoundResult(playerChoice, computerChoice) {
+function evaluateRoundResult(playerChoice, computerChoice) {
   if (playerChoice === "rock-btn") {
     switch (computerChoice) {
       case "rock-btn":
-        return (roundResult = "tie");
+        roundResult = "tie";
+        break;
       // itsATie();
       case "paca-btn":
-        return (roundResult = "lose");
+        roundResult = "lose";
+        break;
       case "scissors-btn":
-        return (roundResult = "win");
+        roundResult = "win";
     }
   } else if (playerChoice === "paca-btn") {
     switch (computerChoice) {
       case "rock-btn":
-        return (roundResult = "win");
+        roundResult = "win";
+        break;
       case "paca-btn":
-        return (roundResult = "tie");
+        roundResult = "tie";
+        break;
       // itsATie();
       case "scissors-btn":
-        return (roundResult = "lose");
+        roundResult = "lose";
     }
   } else if (playerChoice === "scissors-btn") {
     switch (computerChoice) {
       case "rock-btn":
-        return (roundResult = "lose");
+        roundResult = "lose";
+        break;
       case "paca-btn":
-        return (roundResult = "win");
+        roundResult = "win";
+        break;
       case "scissors-btn":
-        return (roundResult = "tie");
+        roundResult = "tie";
       // itsATie();
     }
   } else {
-    return (roundResult = "error");
+    roundResult = "error";
   }
+  return roundResult;
 }
 
 //Main game logic for one round
@@ -95,10 +102,10 @@ function getRoundResult(playerChoice, computerChoice) {
 function playRound() {
   getPlayerChoice(this);
   highlightPlayerChoice(this);
-  getComputerChoice();
+  generateComputerChoice();
   highlightComputerChoice(computerChoice);
   console.log(playerChoice, computerChoice);
-  getRoundResult(playerChoice, computerChoice);
+  evaluateRoundResult(playerChoice, computerChoice);
   console.log(roundResult);
 }
 
