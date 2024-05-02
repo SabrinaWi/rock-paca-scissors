@@ -174,37 +174,36 @@ function evaluateResultMsg(roundResult, choicesMsg) {
   }
 }
 
-//count number of wins
-//TODO display wins in counter/scoreboard
+//Count number of wins
 
-let winsPlayer = 0;
+let playerWins = 0;
 
-function countWinsPlayer(roundResult) {
+function countPlayerWins(roundResult) {
   if (roundResult === "win") {
-    ++winsPlayer;
-    return winsPlayer;
+    ++playerWins;
+    return playerWins;
   }
 }
 
 const playerCounter = document.querySelector(".player-counter");
 
-function displayWinsPlayer(winsPlayer) {
-  playerCounter.textContent = `${winsPlayer}`;
+function displayPlayerWins(playerWins) {
+  playerCounter.textContent = `${playerWins}`;
 }
 
-let winsComputer = 0;
+let computerWins = 0;
 
-function countWinsComputer(roundResult) {
+function countComputerWins(roundResult) {
   if (roundResult === "loss") {
-    ++winsComputer;
-    return winsComputer;
+    ++computerWins;
+    return computerWins;
   }
 }
 
 const computerCounter = document.querySelector(".computer-counter");
 
-function displayWinsComputer(winsComputer) {
-  computerCounter.textContent = `${winsComputer}`;
+function displayComputerWins(computerWins) {
+  computerCounter.textContent = `${computerWins}`;
 }
 
 //Main game logic for one round in phases
@@ -223,11 +222,17 @@ function evaluationPhase(playerChoice, computerChoice) {
 }
 
 function updateCountersPhase(roundResult) {
-  countWinsPlayer(roundResult);
-  displayWinsPlayer(winsPlayer);
-  countWinsComputer(roundResult);
-  displayWinsComputer(winsComputer);
+  countPlayerWins(roundResult);
+  displayPlayerWins(playerWins);
+  countComputerWins(roundResult);
+  displayComputerWins(computerWins);
 }
+
+//Event handler to start a round
+
+playerBtns.forEach((playerBtn) => {
+  playerBtn.addEventListener("click", playRound);
+});
 
 //Main game logic for one round
 
@@ -237,8 +242,9 @@ function playRound() {
   updateCountersPhase(roundResult);
 }
 
-//Event handler to start a round
+//Main game logic for a full game of 5 rounds
 
-playerBtns.forEach((playerBtn) => {
-  playerBtn.addEventListener("click", playRound);
-});
+//Stop game and reset page
+
+if 
+
