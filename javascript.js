@@ -174,19 +174,67 @@ function evaluateResultMsg(roundResult, choicesMsg) {
   }
 }
 
-//Main game logic for one round
-//TODO rmv console.log();
+//count number of wins
+//TODO display wins in counter/scoreboard
 
-function playRound() {
-  getPlayerChoice(this);
-  highlightPlayerChoice(this);
+let winsPlayer = 0;
+
+function countWinsPlayer(roundResult) {
+  if (roundResult === "win") {
+    ++winsPlayer;
+    return winsPlayer;
+  }
+}
+
+const playerCounter = document.querySelector(".player-counter");
+
+function displayWinsPlayer(winsPlayer) {
+  playerCounter.textContent = `${winsPlayer}`;
+}
+
+let winsComputer = 0;
+
+function countWinsComputer(roundResult) {
+  if (roundResult === "loss") {
+    ++winsComputer;
+    return winsComputer;
+  }
+}
+
+const computerCounter = document.querySelector(".computer-counter");
+
+function displayWinsComputer(winsComputer) {
+  computerCounter.textContent = `${winsComputer}`;
+}
+
+//Main game logic for one round in phases
+
+function choicesPhase(playerBtn) {
+  getPlayerChoice(playerBtn);
+  highlightPlayerChoice(playerBtn);
   generateComputerChoice();
   highlightComputerChoice(computerChoice);
-  console.log(playerChoice, computerChoice);
+}
+
+function evaluationPhase(playerChoice, computerChoice) {
   evaluateRoundResult(playerChoice, computerChoice);
-  console.log(roundResult);
   evaluateChoices(playerChoice, roundResult);
   evaluateResultMsg(roundResult, choicesMsg);
+}
+
+function updateCountersPhase(roundResult) {
+  countWinsPlayer(roundResult);
+  displayWinsPlayer(winsPlayer);
+  countWinsComputer(roundResult);
+  displayWinsComputer(winsComputer);
+}
+
+//Main game logic for one round
+
+function playRound() {
+  choicesPhase(this);
+  evaluationPhase(playerChoice, computerChoice);
+  updateCountersPhase(roundResult);
 }
 
 //Event handler to start a round
