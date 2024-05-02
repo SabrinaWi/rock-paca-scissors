@@ -127,7 +127,7 @@ function evaluateChoices(playerChoice, roundResult) {
       case "loss":
         choicesMsg =
           `${computerChoice[0].toUpperCase()}` +
-          `${computerChoice.slice(1)} 
+          `${computerChoice.slice(1)}
         shear the al${playerChoice}! `;
         break;
       case "tie":
@@ -144,7 +144,7 @@ function evaluateChoices(playerChoice, roundResult) {
         case "loss":
           choicesMsg =
             `${computerChoice[0].toUpperCase()}` +
-            `${computerChoice.slice(1)} 
+            `${computerChoice.slice(1)}
           beats ${playerChoice}! `;
           break;
         case "tie":
@@ -157,16 +157,23 @@ function evaluateChoices(playerChoice, roundResult) {
 
 const msg = document.querySelector("#msg");
 
-function evaluateResultMsg(roundResult, choicesMsg) {
+function displayResultMsg(roundResult, choicesMsg) {
+  // TODO Change colors when creating final style
   switch (roundResult) {
     case "win":
       msg.textContent = `${choicesMsg} You win! Well done!`;
+      msg.style.color = "green";
       break;
     case "loss":
       msg.textContent = `${choicesMsg} You lose! Too bad!`;
+      msg.style.color = "red";
       break;
     case "tie":
-      msg.textContent = `${choicesMsg} It's a tie! Let's try that again!`;
+      msg.textContent = `${choicesMsg} It's a tie! `;
+      const tieSpan = document.createElement("span");
+      tieSpan.textContent = "Let's try that again! Click a button!";
+      msg.appendChild(tieSpan);
+      msg.style.color = "orange";
       break;
     default:
       msg.textContent =
@@ -218,7 +225,7 @@ function choicesPhase(playerBtn) {
 function evaluationPhase(playerChoice, computerChoice) {
   evaluateRoundResult(playerChoice, computerChoice);
   evaluateChoices(playerChoice, roundResult);
-  evaluateResultMsg(roundResult, choicesMsg);
+  displayResultMsg(roundResult, choicesMsg);
 }
 
 function updateCountersPhase(roundResult) {
@@ -231,20 +238,86 @@ function updateCountersPhase(roundResult) {
 //Event handler to start a round
 
 playerBtns.forEach((playerBtn) => {
-  playerBtn.addEventListener("click", playRound);
+  playerBtn.addEventListener("click", playGame);
 });
 
 //Main game logic for one round
 
-function playRound() {
-  choicesPhase(this);
+function playRound(playerBtn) {
+  choicesPhase(playerBtn);
   evaluationPhase(playerChoice, computerChoice);
   updateCountersPhase(roundResult);
 }
 
-//Main game logic for a full game of 5 rounds
+//MAIN GAME BEGINNING
+
+//Remove paragraph that says to click a button
+
+function removeInstruction() {
+  const instruction = document.querySelector("#instruction");
+  if (instruction) {
+    instruction.remove();
+  }
+}
+
+//END OF GAME PHASE
+
+//Check for amount of wins and return gameResult
+
+let winner = "";
+
+function evaluateGameResult(playerWins, computerWins) {
+  if (playerWins === 5) {
+    winner = "player";
+  } else if (computerWins === 5) {
+    winner = "computer";
+  }
+  return winner;
+}
+
+function deactivatePlayerButtons(winner) {
+  if (winner === "player" || winner === "computer") {
+    playerBtns.forEach((playerBtn) => {
+      playerBtn.disabled = true;
+    });
+  }
+}
+
+function displayWinner(winner) {
+  if (winner === "player") {
+    msg.textContent = "You've won the game, congratulations!";
+    msg.style.color = "green";
+  } else if (winner === "computer") {
+    msg.textContent = "I'm sorry, but you've lost the game!";
+    msg.style.color = "red";
+    // TODO change colors when final style is decided
+  }
+}
 
 //Stop game and reset page
 
-if 
+//Reset textContent
 
+// const initialMessage = document.querySelector(".messages");
+
+// function resetTextContent() {
+//   message = initialMessage;
+// }
+
+// //Reset buttons
+
+// function resetButtons() {
+//   rmvHighlight(playerBtns, computerBtns);
+// }
+
+function endGamePhase() {
+  evaluateGameResult(playerWins, computerWins);
+  deactivatePlayerButtons(winner);
+  displayWinner(winner);
+}
+
+function playGame() {
+  removeInstruction();
+  playRound(this);
+  endGamePhase();
+}
