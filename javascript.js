@@ -29,13 +29,13 @@ function generateComputerChoice() {
   const random = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
   switch (random) {
     case 1:
-      computerChoice = "rock-btn";
+      computerChoice = "rock";
       break;
     case 2:
-      computerChoice = "paca-btn";
+      computerChoice = "paca";
       break;
     case 3:
-      computerChoice = "scissors-btn";
+      computerChoice = "scissors";
       break;
   }
 }
@@ -55,39 +55,39 @@ function highlightComputerChoice(computerChoice) {
 let roundResult = "";
 
 function evaluateRoundResult(playerChoice, computerChoice) {
-  if (playerChoice === "rock-btn") {
+  if (playerChoice === "rock") {
     switch (computerChoice) {
-      case "rock-btn":
+      case "rock":
         roundResult = "tie";
         break;
       // itsATie();
-      case "paca-btn":
+      case "paca":
         roundResult = "loss";
         break;
-      case "scissors-btn":
+      case "scissors":
         roundResult = "win";
     }
-  } else if (playerChoice === "paca-btn") {
+  } else if (playerChoice === "paca") {
     switch (computerChoice) {
-      case "rock-btn":
+      case "rock":
         roundResult = "win";
         break;
-      case "paca-btn":
+      case "paca":
         roundResult = "tie";
         break;
       // itsATie();
-      case "scissors-btn":
+      case "scissors":
         roundResult = "loss";
     }
-  } else if (playerChoice === "scissors-btn") {
+  } else if (playerChoice === "scissors") {
     switch (computerChoice) {
-      case "rock-btn":
+      case "rock":
         roundResult = "loss";
         break;
-      case "paca-btn":
+      case "paca":
         roundResult = "win";
         break;
-      case "scissors-btn":
+      case "scissors":
         roundResult = "tie";
       // itsATie();
     }
@@ -99,18 +99,74 @@ function evaluateRoundResult(playerChoice, computerChoice) {
 
 //Output for the #msg paragraph
 
+let choicesMsg = "";
+
+function evaluateChoices(playerChoice, roundResult) {
+  if (playerChoice === "rock") {
+    switch (roundResult) {
+      case "win":
+        choicesMsg =
+          `${playerChoice[0].toUpperCase()}` +
+          `${playerChoice.slice(1)} beats ${computerChoice}! `;
+        break;
+      case "loss":
+        choicesMsg =
+          `The al${computerChoice} ` +
+          `spits on the ${playerChoice} and kicks it away! `;
+        break;
+      case "tie":
+        choicesMsg = "Great minds think alike! ";
+    }
+  } else if (playerChoice === "paca") {
+    switch (roundResult) {
+      case "win":
+        choicesMsg =
+          `The al${playerChoice} ` +
+          `spits on the ${computerChoice} and kicks it away! `;
+        break;
+      case "loss":
+        choicesMsg =
+          `${computerChoice[0].toUpperCase()}` +
+          `${computerChoice.slice(1)} 
+        shear the al${playerChoice}! `;
+        break;
+      case "tie":
+        choicesMsg = "Great minds think alike! ";
+    }
+  } else if (playerChoice === "scissors") {
+    {
+      switch (roundResult) {
+        case "win":
+          choicesMsg =
+            `${playerChoice[0].toUpperCase()}` +
+            `${playerChoice.slice(1)} shear the al${computerChoice}! `;
+          break;
+        case "loss":
+          choicesMsg =
+            `${computerChoice[0].toUpperCase()}` +
+            `${computerChoice.slice(1)} 
+          beats ${playerChoice}! `;
+          break;
+        case "tie":
+          choicesMsg = "Great minds think alike! ";
+      }
+    }
+  }
+  return choicesMsg;
+}
+
 const msg = document.querySelector("#msg");
 
-function evaluateResultMsg(roundResult) {
+function evaluateResultMsg(roundResult, choicesMsg) {
   switch (roundResult) {
     case "win":
-      msg.textContent = "You win! Well done!";
+      msg.textContent = `${choicesMsg} You win! Well done!`;
       break;
     case "loss":
-      msg.textContent = "You lose! Too bad!";
+      msg.textContent = `${choicesMsg} You lose! Too bad!`;
       break;
     case "tie":
-      msg.textContent = "It's a tie! Let's try that again!";
+      msg.textContent = `${choicesMsg} It's a tie! Let's try that again!`;
       break;
     default:
       msg.textContent =
@@ -129,7 +185,8 @@ function playRound() {
   console.log(playerChoice, computerChoice);
   evaluateRoundResult(playerChoice, computerChoice);
   console.log(roundResult);
-  evaluateResultMsg(roundResult);
+  evaluateChoices(playerChoice, roundResult);
+  evaluateResultMsg(roundResult, choicesMsg);
 }
 
 //Event handler to start a round
