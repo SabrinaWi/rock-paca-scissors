@@ -170,9 +170,9 @@ function displayResultMsg(roundResult, choicesMsg) {
       break;
     case "tie":
       msg.textContent = `${choicesMsg} It's a tie! `;
-      const tieSpan = document.createElement("span");
-      tieSpan.textContent = "Let's try that again! Click a button!";
-      msg.appendChild(tieSpan);
+      const tieMsg = document.createElement("p");
+      tieMsg.textContent = "Let's try that again! Click a button!";
+      msg.appendChild(tieMsg);
       msg.style.color = "orange";
       break;
     default:
