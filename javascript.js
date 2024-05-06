@@ -1,14 +1,10 @@
+//Safe player and computer choices to variables
+
 let playerChoice = "";
 let computerChoice = "";
 
 const playerBtns = document.querySelectorAll("#player-btns button");
 const computerBtns = document.querySelectorAll("#computer-btns button");
-
-// Function to remove highlight from buttons
-
-function rmvHighlight(buttons) {
-  buttons.forEach((button) => button.classList.remove("active"));
-}
 
 //Get player choice
 
@@ -48,6 +44,12 @@ function highlightComputerChoice(computerChoice) {
     `#computer-btns button[name="${computerChoice}"]`
   );
   computerBtn.classList.add("active");
+}
+
+// Function to remove highlight from buttons
+
+function rmvHighlight(buttons) {
+  buttons.forEach((button) => button.classList.remove("active"));
 }
 
 //Evaluate result for one round
@@ -97,79 +99,79 @@ function evaluateRoundResult(playerChoice, computerChoice) {
   return roundResult;
 }
 
-//Output for the #msg paragraph
+//Output round result for the #msg paragraph
 
-let choicesMsg = "";
+let resultMsg = "";
 
-function evaluateChoices(playerChoice, roundResult) {
+function createResultMsg(playerChoice, roundResult) {
   if (playerChoice === "rock") {
     switch (roundResult) {
       case "win":
-        choicesMsg =
+        resultMsg =
           `${playerChoice[0].toUpperCase()}` +
           `${playerChoice.slice(1)} beats ${computerChoice}! `;
         break;
       case "loss":
-        choicesMsg =
+        resultMsg =
           `The al${computerChoice} ` +
           `spits on the ${playerChoice} and kicks it away! `;
         break;
       case "tie":
-        choicesMsg = "Great minds think alike! ";
+        resultMsg = "Great minds think alike! ";
     }
   } else if (playerChoice === "paca") {
     switch (roundResult) {
       case "win":
-        choicesMsg =
+        resultMsg =
           `The al${playerChoice} ` +
           `spits on the ${computerChoice} and kicks it away! `;
         break;
       case "loss":
-        choicesMsg =
+        resultMsg =
           `${computerChoice[0].toUpperCase()}` +
           `${computerChoice.slice(1)}
         shear the al${playerChoice}! `;
         break;
       case "tie":
-        choicesMsg = "Great minds think alike! ";
+        resultMsg = "Great minds think alike! ";
     }
   } else if (playerChoice === "scissors") {
     {
       switch (roundResult) {
         case "win":
-          choicesMsg =
+          resultMsg =
             `${playerChoice[0].toUpperCase()}` +
             `${playerChoice.slice(1)} shear the al${computerChoice}! `;
           break;
         case "loss":
-          choicesMsg =
+          resultMsg =
             `${computerChoice[0].toUpperCase()}` +
             `${computerChoice.slice(1)}
           beats ${playerChoice}! `;
           break;
         case "tie":
-          choicesMsg = "Great minds think alike! ";
+          resultMsg = "Great minds think alike! ";
       }
     }
   }
-  return choicesMsg;
+  return resultMsg;
 }
 
 const msg = document.querySelector("#msg");
 
-function displayResultMsg(roundResult, choicesMsg) {
+function displayResultMsg(roundResult, resultMsg) {
   // TODO Change colors when creating final style
   switch (roundResult) {
     case "win":
-      msg.textContent = `${choicesMsg} You win! Well done!`;
+      msg.textContent = `${resultMsg} You win! Well done!`;
       msg.style.color = "green";
       break;
     case "loss":
-      msg.textContent = `${choicesMsg} You lose! Too bad!`;
+      msg.textContent = `${resultMsg} You lose! Too bad!`;
       msg.style.color = "red";
       break;
     case "tie":
-      msg.textContent = `${choicesMsg} It's a tie! `;
+      msg.textContent = `${resultMsg} It's a tie! `;
       const tieMsg = document.createElement("p");
       tieMsg.textContent = "Let's try that again! Click a button!";
       msg.appendChild(tieMsg);
@@ -181,7 +183,7 @@ function displayResultMsg(roundResult, choicesMsg) {
   }
 }
 
-//Count number of wins
+//Count number of player wins
 
 let playerWins = 0;
 
@@ -192,11 +194,15 @@ function countPlayerWins(roundResult) {
   }
 }
 
+//Display number of player wins
+
 const playerCounter = document.querySelector(".player-counter");
 
 function displayPlayerWins(playerWins) {
   playerCounter.textContent = `${playerWins}`;
 }
+
+//Count number of computer wins
 
 let computerWins = 0;
 
@@ -206,6 +212,8 @@ function countComputerWins(roundResult) {
     return computerWins;
   }
 }
+
+//Display number of computer wins
 
 const computerCounter = document.querySelector(".computer-counter");
 
@@ -224,8 +232,8 @@ function choicesPhase(playerBtn) {
 
 function evaluationPhase(playerChoice, computerChoice) {
   evaluateRoundResult(playerChoice, computerChoice);
-  evaluateChoices(playerChoice, roundResult);
-  displayResultMsg(roundResult, choicesMsg);
+  createResultMsg(playerChoice, roundResult);
+  displayResultMsg(roundResult, resultMsg);
 }
 
 function updateCountersPhase(roundResult) {
@@ -235,11 +243,24 @@ function updateCountersPhase(roundResult) {
   displayComputerWins(computerWins);
 }
 
-//Event handler to start a round
+//MAIN GAME BEGINNING
+
+//Event handler to start a game
 
 playerBtns.forEach((playerBtn) => {
   playerBtn.addEventListener("click", playGame);
 });
+
+//Remove paragraph that says to click a button
+
+function removeInstruction() {
+  const instruction = document.querySelector("#instruction");
+  if (instruction) {
+    instruction.textContent = "";
+  }
+}
+
+//PLAY GAME
 
 //Main game logic for one round
 
@@ -247,17 +268,6 @@ function playRound(playerBtn) {
   choicesPhase(playerBtn);
   evaluationPhase(playerChoice, computerChoice);
   updateCountersPhase(roundResult);
-}
-
-//MAIN GAME BEGINNING
-
-//Remove paragraph that says to click a button
-
-function removeInstruction() {
-  const instruction = document.querySelector("#instruction");
-  if (instruction) {
-    instruction.remove();
-  }
 }
 
 //END OF GAME PHASE
@@ -294,30 +304,63 @@ function displayWinner(winner) {
   }
 }
 
-//Stop game and reset page
-
-//Reset textContent
-
-// const initialMessage = document.querySelector(".messages");
-
-// function resetTextContent() {
-//   message = initialMessage;
-// }
-
-// //Reset buttons
-
-// function resetButtons() {
-//   rmvHighlight(playerBtns, computerBtns);
-// }
-
 function endGamePhase() {
   evaluateGameResult(playerWins, computerWins);
   deactivatePlayerButtons(winner);
   displayWinner(winner);
 }
 
+//Reset Game/Page phase
+
+//Reset textContent
+
+// const initialMessage = document.querySelector(".messages.textContent");
+
+// function resetTextContent(initialMessage) {
+//   const messages = document.querySelector(".messages");
+//   messages.textContent = initialMessage;
+// }
+
+//Activate player buttons
+
+function activatePlayerButtons(playerBtns) {
+  playerBtns.forEach((playerBtn) => {
+    playerBtn.disabled = false;
+  });
+}
+
+//Reset buttons
+
+// function resetButtons(playerBtns, computerBtns) {
+//   rmvHighlight(playerBtns, computerBtns);
+//   activatePlayerButtons(playerBtns);
+// }
+
+const resetGameBtn = document.createElement("button");
+
+function createResetButton(msg) {
+  if (
+    msg.textContent === "You've won the game, congratulations!" ||
+    msg.textContent === "I'm sorry, but you've lost the game!"
+  ) {
+    msg.textContent = "";
+    resetGameBtn.textContent = "Click to start a new game!";
+    msg.appendChild(resetGameBtn);
+  }
+}
+
+resetGameBtn.addEventListener("click", resetGame);
+
+function resetGame() {
+  console.log("Click");
+  // resetTextContent(initialMessage),
+  // resetButtons(playerBtns, computerBtns),
+  // activatePlayerButtons(playerBtns)
+}
+
 function playGame() {
   removeInstruction();
   playRound(this);
   endGamePhase();
+  createResetButton(msg);
 }

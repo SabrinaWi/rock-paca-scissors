@@ -104,6 +104,10 @@ main {
   margin: auto;
 }
 
+button {
+  font-family: inherit;
+}
+
 footer {
   min-height: 3vh;
   font-size: 12px;
