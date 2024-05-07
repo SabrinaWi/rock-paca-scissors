@@ -312,30 +312,6 @@ function endGamePhase() {
 
 //Reset Game/Page phase
 
-//Reset textContent
-
-// const initialMessage = document.querySelector(".messages.textContent");
-
-// function resetTextContent(initialMessage) {
-//   const messages = document.querySelector(".messages");
-//   messages.textContent = initialMessage;
-// }
-
-//Activate player buttons
-
-function activatePlayerButtons(playerBtns) {
-  playerBtns.forEach((playerBtn) => {
-    playerBtn.disabled = false;
-  });
-}
-
-//Reset buttons
-
-// function resetButtons(playerBtns, computerBtns) {
-//   rmvHighlight(playerBtns, computerBtns);
-//   activatePlayerButtons(playerBtns);
-// }
-
 const resetGameBtn = document.createElement("button");
 
 function createResetButton(msg) {
@@ -349,14 +325,15 @@ function createResetButton(msg) {
   }
 }
 
-resetGameBtn.addEventListener("click", resetGame);
+//Reloads the page
 
-function resetGame() {
-  console.log("Click");
-  // resetTextContent(initialMessage),
-  // resetButtons(playerBtns, computerBtns),
-  // activatePlayerButtons(playerBtns)
+function reloadPage(resetGameBtn) {
+  if (resetGameBtn) {
+    location.reload();
+  }
 }
+
+resetGameBtn.addEventListener("click", reloadPage);
 
 function playGame() {
   removeInstruction();

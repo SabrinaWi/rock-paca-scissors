@@ -87,6 +87,8 @@ main {
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
+/* TODO add player-btns clicked effect (not active, just click itself, so that it becomes obv it is clicked even when it is clicked again after a tie) */
+
 #player-btns button.active,
 #computer-btns button.active {
   border: none;
