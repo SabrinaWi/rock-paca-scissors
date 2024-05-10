@@ -253,11 +253,10 @@ playerBtns.forEach((playerBtn) => {
 
 //Remove paragraph that says to click a button
 
+const instruction = document.querySelector("#instruction");
+
 function removeInstruction() {
-  const instruction = document.querySelector("#instruction");
-  if (instruction) {
-    instruction.textContent = "";
-  }
+  instruction.textContent = "";
 }
 
 //PLAY GAME
@@ -314,14 +313,13 @@ function endGamePhase() {
 
 const resetGameBtn = document.createElement("button");
 
-function createResetButton(msg) {
+function createResetButton(instruction) {
   if (
     msg.textContent === "You've won the game, congratulations!" ||
     msg.textContent === "I'm sorry, but you've lost the game!"
   ) {
-    msg.textContent = "";
     resetGameBtn.textContent = "Click to start a new game!";
-    msg.appendChild(resetGameBtn);
+    instruction.appendChild(resetGameBtn);
   }
 }
 
@@ -339,5 +337,5 @@ function playGame() {
   removeInstruction();
   playRound(this);
   endGamePhase();
-  createResetButton(msg);
+  createResetButton(instruction);
 }
