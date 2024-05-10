@@ -15,8 +15,15 @@ function getPlayerChoice(playerBtn) {
 //Highlight player choice
 
 function highlightPlayerChoice(playerBtn) {
-  rmvHighlight(playerBtns);
-  playerBtn.classList.add("active");
+  if (playerBtn.classList.contains("active")) {
+    // Button is already active, toggle to second color
+    playerBtn.classList.toggle("second-color");
+  } else {
+    // Button is not active, toggle to active color
+    rmvHighlight(playerBtns);
+    playerBtn.classList.remove("second-color");
+    playerBtn.classList.add("active");
+  }
 }
 
 //Generate computer choice
@@ -39,11 +46,16 @@ function generateComputerChoice() {
 //Highlight computer choice
 
 function highlightComputerChoice(computerChoice) {
-  rmvHighlight(computerBtns);
   computerBtn = document.querySelector(
     `#computer-btns button[name="${computerChoice}"]`
   );
-  computerBtn.classList.add("active");
+  if (computerBtn.classList.contains("active")) {
+    computerBtn.classList.toggle("second-color");
+  } else {
+    rmvHighlight(computerBtns);
+    computerBtn.classList.remove("second-color");
+    computerBtn.classList.add("active");
+  }
 }
 
 // Function to remove highlight from buttons
@@ -332,6 +344,8 @@ function reloadPage(resetGameBtn) {
 }
 
 resetGameBtn.addEventListener("click", reloadPage);
+
+//PLAY A FULL GAME
 
 function playGame() {
   removeInstruction();

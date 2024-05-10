@@ -96,6 +96,13 @@ main {
     rgba(7, 76, 156, 0.3) 0px 0px 0px 3px;
 }
 
+#player-btns button.active.second-color,
+#computer-btns button.active.second-color {
+  border: none;
+  box-shadow: rgba(0, 0, 128, 0.5) 0px 0px 0px 3px inset,
+    rgba(0, 0, 64, 0.5) 0px 0px 0px 3px;
+}
+
 .messages {
   display: flex;
   flex-direction: column;
