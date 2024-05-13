@@ -172,7 +172,6 @@ function createResultMsg(playerChoice, roundResult) {
 const msg = document.querySelector("#msg");
 
 function displayResultMsg(roundResult, resultMsg) {
-  // TODO Change colors when creating final style
   switch (roundResult) {
     case "win":
       msg.textContent = `${resultMsg} You win! Well done!`;
