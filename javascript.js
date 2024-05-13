@@ -176,18 +176,18 @@ function displayResultMsg(roundResult, resultMsg) {
   switch (roundResult) {
     case "win":
       msg.textContent = `${resultMsg} You win! Well done!`;
-      msg.style.color = "green";
+      msg.style.color = "rgb(163, 212, 163)";
       break;
     case "loss":
       msg.textContent = `${resultMsg} You lose! Too bad!`;
-      msg.style.color = "red";
+      msg.style.color = "rgb(255,79,91)";
       break;
     case "tie":
       msg.textContent = `${resultMsg} It's a tie! `;
       const tieMsg = document.createElement("p");
       tieMsg.textContent = "Let's try that again! Click a button!";
       msg.appendChild(tieMsg);
-      msg.style.color = "orange";
+      msg.style.color = "rgb(255,153,102)";
       break;
     default:
       msg.textContent =
@@ -307,11 +307,10 @@ function deactivatePlayerButtons(winner) {
 function displayWinner(winner) {
   if (winner === "player") {
     msg.textContent = "You've won the game, congratulations!";
-    msg.style.color = "green";
+    msg.style.color = "rgb(163, 212, 163)";
   } else if (winner === "computer") {
     msg.textContent = "I'm sorry, but you've lost the game!";
-    msg.style.color = "red";
-    // TODO change colors when final style is decided
+    msg.style.color = "rgb(255,79,91)";
   }
 }
 
@@ -332,6 +331,7 @@ function createResetButton(instruction) {
   ) {
     resetGameBtn.textContent = "Click to start a new game!";
     instruction.appendChild(resetGameBtn);
+    resetGameBtn.style.backgroundColor = msg.style.color;
   }
 }
 
