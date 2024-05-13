@@ -11,18 +11,25 @@ body {
   font-family: "DynaPuff", Arial, sans-serif;
   margin: 0px;
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   flex-direction: column;
+  justify-content: space-between;
   text-align: center;
+  color: white;
+  background-color: black;
 }
 
 header {
-  min-height: 10vh;
-  font-size: 100px;
+  display: flex;
+  height: 10vh;
+  font-size: 4.5em;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
   display: flex;
+  height: 82vh;
   flex-grow: 1;
   flex-direction: column;
   justify-content: center;
@@ -32,37 +39,41 @@ main {
 .play-area,
 .messages {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  width: 100vw;
   margin: auto;
 }
 
 .play-area {
-  height: 65%;
+  height: 41vh;
   flex-basis: 0;
   margin-top: 50px;
   margin-bottom: 30px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5%;
+}
+
+h2 {
+  font-size: 2.5em;
 }
 
 .player-side,
 .computer-side {
   display: flex;
+  width: 45vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40%;
   margin: auto;
   flex: 1;
 }
 
 .counters {
   font-family: "Micro 5", Arial, sans-serif;
-  font-size: 100px;
+  font-size: 8em;
   display: flex;
-  width: 20%;
-  justify-content: center;
-  align-items: center;
+  width: 10vw;
+  justify-content: space-evenly;
 }
 
 #player-btns,
@@ -71,7 +82,6 @@ main {
   display: flex;
   gap: 10px;
   padding: 5px;
-  width: 100%;
 }
 
 #player-btns button,
@@ -79,15 +89,16 @@ main {
 #computer-btns button,
 #computer-btns img {
   border-radius: 100%;
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
 }
 
 #player-btns button:hover {
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  /* box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; */
+    box-shadow: 0px 10px 20px rgba(0, 255, 0, 0.4),
+      0px 6px 6px rgba(0, 255, 0, 0.5);
+  }
 }
-
-/* TODO add player-btns clicked effect (not active, just click itself, so that it becomes obv it is clicked even when it is clicked again after a tie) */
 
 #player-btns button.active,
 #computer-btns button.active {
@@ -105,12 +116,17 @@ main {
 
 .messages {
   display: flex;
+  height: 41vh;
   flex-direction: column;
-  font-size: 24px;
+  font-size: 2em;
   justify-content: space-around;
+  align-items: center;
   flex-basis: 0;
-  height: 35%;
   margin: auto;
+}
+
+.messages p {
+  height: 1.3vh;
 }
 
 button {
@@ -118,8 +134,13 @@ button {
 }
 
 footer {
-  min-height: 3vh;
-  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5em;
+  height: 8vh;
+  font-size: 1em;
+  padding: 0.5em;
 }
 
 footer a {
@@ -127,7 +148,18 @@ footer a {
 }
 
 footer a:active {
+  display: flex;
+  align-items: flex-end;
   color: inherit;
+}
+
+footer a img:hover {
+  transform: scale(3);
+}
+
+footer img {
+  height: 1.5em;
+  width: 1.5em;
 }
 
 /* TODO colors 
